@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>니즈오션 | 회사 계정으로 시작하기</title>
+<meta name="description" content="코스맥스 임직원 전용 서비스, 니즈오션. 회사 계정으로 로그인하고 시작하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#C7AEE3;
+    --rose-soft:#F3EEFB;
+    --rose-deep:#8A6BB0;
+    --sky:#A9D6EA;
+    --sky-soft:#EDF7FB;
+    --sky-deep:#5F9BBF;
+    --gold:#D6C7ED;
+    --gold-soft:#F6F1FB;
+    --gold-deep:#7C79B8;
+    --pink:var(--rose);
+    --pink-soft:var(--rose-soft);
+    --yellow:var(--gold);
+    --yellow-soft:var(--gold-soft);
+    --ink:#2B2B3D;
+    --ink-soft:#6B6B80;
+    --white:#FFFFFF;
+    --cream:#FCFBFF;
+    --shadow: 0 10px 30px rgba(43,43,61,0.06);
+    --radius-lg: 32px;
+    --radius-md: 20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 15% 20%, var(--rose-soft) 0%, transparent 45%),
+      radial-gradient(circle at 85% 10%, var(--sky-soft) 0%, transparent 45%),
+      radial-gradient(circle at 60% 95%, var(--gold-soft) 0%, transparent 50%),
+      var(--cream);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+  .kr{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif; font-weight:700;}
+  a{text-decoration:none;color:inherit;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+
+  .bubble{
+    position:absolute;
+    border-radius:50%;
+    opacity:0.4;
+    filter:blur(3px);
+    animation:float 11s ease-in-out infinite;
+    pointer-events:none;
+    z-index:0;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) translateX(0) scale(1);}
+    50%{transform:translateY(-26px) translateX(10px) scale(1.06);}
+  }
+
+  .top-bar{
+    padding:26px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    z-index:2;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:'Malgun Gothic','Noto Sans KR',sans-serif;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:0.3px;
+  }
+  .logo span.brand{
+    background:linear-gradient(90deg,var(--rose-deep),var(--gold-deep));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .back-link{
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:color .2s;
+  }
+  .back-link:hover{color:var(--ink);}
+
+  main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    position:relative;
+    z-index:2;
+  }
+
+  .auth-card{
+    width:100%;
+    max-width:440px;
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    box-shadow:0 20px 50px rgba(43,43,61,0.12);
+    padding:44px 40px 38px;
+    position:relative;
+    overflow:hidden;
+  }
+  .auth-card::before{
+    content:'';
+    position:absolute;
+    top:-60px; right:-60px;
+    width:160px;height:160px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--pink-soft),var(--sky-soft));
+    z-index:0;
+  }
+  .auth-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--gold-soft);
+    color:var(--gold-deep);
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.3px;
+    padding:7px 14px;
+    border-radius:999px;
+    margin-bottom:18px;
+    position:relative;
+    z-index:1;
+  }
+  .auth-card h1{
+    font-size:26px;
+    line-height:1.4;
+    margin-bottom:10px;
+    position:relative;
+    z-index:1;
+  }
+  .auth-card .sub{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin-bottom:30px;
+    position:relative;
+    z-index:1;
+  }
+  .auth-card .sub b{color:var(--rose-deep);}
+
+  .field{
+    margin-bottom:18px;
+    position:relative;
+    z-index:1;
+  }
+  .field label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .field .input-wrap{
+    display:flex;
+    align-items:center;
+    background:var(--cream);
+    border:2px solid transparent;
+    border-radius:14px;
+    padding:0 16px;
+    transition:border-color .2s, background .2s;
+  }
+  .field .input-wrap:focus-within{
+    border-color:var(--sky);
+    background:var(--white);
+  }
+  .field .input-wrap .icon{
+    display:flex;
+    margin-right:10px;
+    color:var(--ink-soft);
+  }
+  .field .input-wrap .icon svg{width:16px;height:16px;}
+  .field input{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-family:inherit;
+    font-size:14.5px;
+    padding:13px 0;
+    color:var(--ink);
+  }
+  .field input::placeholder{color:#BEBECC;}
+  .field .hint{
+    font-size:12px;
+    color:#B0B0C0;
+    margin-top:6px;
+  }
+  .field .error-msg{
+    font-size:12.5px;
+    color:#FF6B81;
+    margin-top:6px;
+    font-weight:600;
+    display:none;
+  }
+  .field.has-error .input-wrap{border-color:#FF6B81;}
+  .field.has-error .error-msg{display:block;}
+
+  .row-between{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:13px;
+    margin-bottom:26px;
+    position:relative;
+    z-index:1;
+  }
+  .checkbox-wrap{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .checkbox-wrap input{
+    width:16px;height:16px;
+    accent-color:var(--rose-deep);
+    cursor:pointer;
+  }
+  .row-between a{
+    color:var(--sky-deep);
+    font-weight:600;
+  }
+
+  .submit-btn{
+    width:100%;
+    padding:15px 0;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));
+    color:var(--white);
+    font-weight:700;
+    font-size:15.5px;
+    letter-spacing:0.2px;
+    box-shadow:0 12px 26px rgba(201,122,147,0.3);
+    transition:transform .2s, box-shadow .2s;
+    position:relative;
+    z-index:1;
+  }
+  .submit-btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(201,122,147,0.4);}
+  .submit-btn:active{transform:translateY(0);}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:26px 0 20px;
+    color:#C3C3D2;
+    font-size:12.5px;
+    position:relative;
+    z-index:1;
+  }
+  .divider::before, .divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:#EDEDF2;
+  }
+
+  .help-note{
+    background:var(--sky-soft);
+    border-radius:14px;
+    padding:14px 16px;
+    font-size:12.5px;
+    color:var(--sky-deep);
+    line-height:1.6;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    position:relative;
+    z-index:1;
+  }
+  .help-note .icon{flex-shrink:0;display:flex;padding-top:1px;}
+  .help-note .icon svg{width:16px;height:16px;}
+
+  .success-panel{
+    display:none;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .success-panel .icon-circle{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 18px;
+  }
+  .success-panel .icon-circle svg{width:30px;height:30px;}
+  .success-panel h2{
+    font-size:22px;
+    margin-bottom:10px;
+  }
+  .success-panel p{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin-bottom:24px;
+  }
+
+  .public-inquiry{
+    width:100%;
+    max-width:440px;
+    margin:18px auto 0;
+    text-align:center;
+    padding:20px 24px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.65);
+    border:1px dashed var(--sky);
+    position:relative;
+    z-index:1;
+  }
+  .public-inquiry p{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .public-inquiry .email-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:10px;
+    font-weight:700;
+    font-size:14.5px;
+    color:var(--sky-deep);
+    transition:color .2s;
+  }
+  .public-inquiry .email-link svg{width:15px;height:15px;}
+  .public-inquiry .email-link:hover{color:var(--rose-deep);}
+
+  footer.page-footer{
+    text-align:center;
+    padding:20px;
+    font-size:12px;
+    color:#B0B0C0;
+    position:relative;
+    z-index:2;
+  }
+
+  @media (max-width:480px){
+    .top-bar{padding:20px;}
+    .auth-card{padding:34px 24px 30px;border-radius:24px;}
+    .auth-card h1{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+
+<span class="bubble" style="width:60px;height:60px;background:var(--pink);left:8%;top:12%;"></span>
+<span class="bubble" style="width:34px;height:34px;background:var(--sky);left:85%;top:18%;animation-delay:1.2s;"></span>
+<span class="bubble" style="width:22px;height:22px;background:var(--yellow);left:90%;top:65%;animation-delay:0.6s;"></span>
+<span class="bubble" style="width:44px;height:44px;background:var(--sky);left:6%;top:75%;animation-delay:2s;"></span>
+
+<div class="top-bar">
+  <a href="index.html" class="logo">
+    <span>니즈<span class="brand">오션</span></span>
+  </a>
+  <a href="index.html" class="back-link">← 홈으로 돌아가기</a>
+</div>
+
+<main>
+  <div class="auth-card">
+
+    <!-- 로그인 폼 -->
+    <div id="loginView">
+      <span class="auth-badge">코스맥스 임직원 전용</span>
+      <h1 class="kr">회사 계정으로<br>니즈오션 시작하기</h1>
+      <p class="sub">니즈오션은 <b>코스맥스(COSMAX)</b> 임직원만 이용할 수 있는 사내 서비스입니다.<br>사내 이메일 계정으로 로그인해주세요.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="field" id="emailField">
+          <label for="companyEmail">회사 이메일</label>
+          <div class="input-wrap">
+            <span class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>
+            </span>
+            <input type="text" id="companyEmail" placeholder="이름@cosmax.com" autocomplete="username">
+          </div>
+          <p class="hint">이메일 주소 끝이 @cosmax.com이면 로그인이 가능합니다.</p>
+          <p class="error-msg">코스맥스 회사 계정(@cosmax.com)만 사용할 수 있어요. 다시 확인해주세요!</p>
+        </div>
+
+        <div class="field" id="pwField">
+          <label for="companyPw">비밀번호</label>
+          <div class="input-wrap">
+            <span class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="3.5"/><path d="M10.5 12.5 19 4M16.5 6.5 19 9M13.5 9.5 16 12"/></svg>
+            </span>
+            <input type="password" id="companyPw" placeholder="사내 계정 비밀번호를 입력해주세요" autocomplete="current-password">
+          </div>
+          <p class="error-msg">비밀번호를 입력해주세요.</p>
+        </div>
+
+        <div class="row-between">
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="keepLogin">
+            로그인 상태 유지
+          </label>
+          <a href="#">비밀번호를 잊으셨나요?</a>
+        </div>
+
+        <button type="submit" class="submit-btn">회사 계정으로 시작하기</button>
+      </form>
+
+      <div class="divider">또는</div>
+
+      <div class="help-note">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.2v.1"/></svg>
+        </span>
+        <span>사내 SSO(통합 로그인) 계정이 있다면 사내 포털을 통해 니즈오션에 자동으로 연결됩니다. 계정 관련 문의는 사내 IT지원팀으로 연락해주세요.</span>
+      </div>
+    </div>
+
+    <!-- 로그인 성공 화면 -->
+    <div class="success-panel" id="successView">
+      <div class="icon-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7C79B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 6.5"/></svg>
+      </div>
+      <h2 class="kr">환영합니다!</h2>
+      <p><span id="welcomeEmail"></span> 님, 니즈오션 계정 확인이 완료되었습니다.<br>곧 서비스 화면으로 연결됩니다.</p>
+      <button class="submit-btn" onclick="location.href='index.html'">니즈오션 홈으로 이동</button>
+    </div>
+
+  </div>
+
+  <div class="public-inquiry">
+    <p>코스맥스 임직원이 아니신가요?<br>일반 고객 대상 가격 문의는 아래 이메일로 편하게 남겨주세요.</p>
+    <a href="mailto:seoyoon1.park@cosmax.com" class="email-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>
+      seoyoon1.park@cosmax.com
+    </a>
+  </div>
+</main>
+
+<footer class="page-footer">
+  © 2026 NeedsOcean · COSMAX 임직원 전용 서비스
+</footer>
+
+<script src="data/session.js"></script>
+<script>
+  // 이미 로그인한 상태면 로그인 폼 대신 서비스로 바로 진입시킴
+  if (NeedsOceanSession.isLoggedIn()) {
+    location.replace(NeedsOceanSession.enterServicePage());
+  }
+
+  const form = document.getElementById('loginForm');
+  const emailField = document.getElementById('emailField');
+  const pwField = document.getElementById('pwField');
+  const emailInput = document.getElementById('companyEmail');
+  const pwInput = document.getElementById('companyPw');
+  const loginView = document.getElementById('loginView');
+  const successView = document.getElementById('successView');
+  const welcomeEmail = document.getElementById('welcomeEmail');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    const pw = pwInput.value.trim();
+    let valid = true;
+
+    const isCompanyEmail = email.toLowerCase().endsWith('@cosmax.com') && email.length > '@cosmax.com'.length;
+    if (!isCompanyEmail) {
+      emailField.classList.add('has-error');
+      valid = false;
+    } else {
+      emailField.classList.remove('has-error');
+    }
+
+    if (!pw) {
+      pwField.classList.add('has-error');
+      valid = false;
+    } else {
+      pwField.classList.remove('has-error');
+    }
+
+    if (!valid) return;
+
+    NeedsOceanSession.login(email);
+
+    welcomeEmail.textContent = email;
+    loginView.style.display = 'none';
+    successView.style.display = 'block';
+  });
+
+  [emailInput, pwInput].forEach(input => {
+    input.addEventListener('input', () => {
+      input.closest('.field').classList.remove('has-error');
+    });
+  });
+</script>
+
+</body>
+</html>

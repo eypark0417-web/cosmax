@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>니즈오션 | 소개</title>
+<meta name="description" content="코스맥스 임직원을 위한 마케팅 인사이트 플랫폼, 니즈오션을 소개합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#C7AEE3; --rose-soft:#F3EEFB; --rose-deep:#8A6BB0;
+    --sky:#A9D6EA; --sky-soft:#EDF7FB; --sky-deep:#5F9BBF;
+    --gold:#D6C7ED; --gold-soft:#F6F1FB; --gold-deep:#7C79B8;
+    --ink:#2B2B3D; --ink-soft:#6B6B80; --white:#FFFFFF; --cream:#FCFBFF;
+    --shadow: 0 10px 30px rgba(43,43,61,0.06);
+    --radius-lg: 32px; --radius-md: 20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  .kr{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;font-weight:700;}
+  img,svg{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+  .container{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,252,245,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,43,61,0.06);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Malgun Gothic','Noto Sans KR',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.3px;color:var(--ink);}
+  .logo span.brand{background:linear-gradient(90deg,var(--rose-deep),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  nav.main-nav ul{display:flex;gap:32px;align-items:center;}
+  nav.main-nav a{font-size:15px;font-weight:600;color:var(--ink-soft);transition:color .2s;}
+  nav.main-nav a:hover{color:var(--ink);}
+  .cta-btn{background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);font-weight:600;font-size:14.5px;padding:12px 24px;border-radius:999px;box-shadow:0 8px 18px rgba(201,122,147,0.28);transition:transform .2s;white-space:nowrap;}
+  .cta-btn:hover{transform:translateY(-2px);}
+  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;}
+  .hamburger span{width:24px;height:3px;border-radius:3px;background:var(--ink);}
+
+  .page-hero{position:relative;padding:64px 0 44px;text-align:center;overflow:hidden;
+    background:radial-gradient(circle at 20% 20%, var(--rose-soft) 0%, transparent 45%),
+               radial-gradient(circle at 80% 15%, var(--sky-soft) 0%, transparent 45%),
+               var(--cream);}
+  .page-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--rose-soft);padding:8px 20px;border-radius:999px;font-size:13px;font-weight:600;color:var(--rose-deep);box-shadow:var(--shadow);margin-bottom:18px;}
+  .page-title{font-size:clamp(28px,4vw,42px);margin-bottom:16px;line-height:1.35;}
+  .page-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.8;max-width:600px;margin:0 auto;}
+
+  .content-section{padding:20px 0 90px;}
+  .story-block{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:36px;margin-bottom:32px;}
+  .story-block h2{font-size:20px;margin-bottom:14px;}
+  .story-block p{font-size:14.5px;color:var(--ink-soft);line-height:1.85;}
+  .story-block p + p{margin-top:12px;}
+
+  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:36px;}
+  .value-card{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow);padding:26px;text-align:center;}
+  .value-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  .value-icon svg{width:22px;height:22px;}
+  .value-card.rose .value-icon{background:var(--rose-soft);}
+  .value-card.sky .value-icon{background:var(--sky-soft);}
+  .value-card.gold .value-icon{background:var(--gold-soft);}
+  .value-card h3{font-size:15.5px;margin-bottom:8px;}
+  .value-card p{font-size:13px;color:var(--ink-soft);line-height:1.6;}
+
+  .timeline{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:32px 36px;}
+  .timeline h2{font-size:18px;margin-bottom:20px;}
+  .timeline-item{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid rgba(43,43,61,0.06);}
+  .timeline-item:last-child{border-bottom:none;}
+  .timeline-item .date{font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--sky-deep);width:80px;flex-shrink:0;}
+  .timeline-item .txt h4{font-size:14.5px;margin-bottom:3px;}
+  .timeline-item .txt p{font-size:12.5px;color:var(--ink-soft);}
+
+  .cta-line{text-align:center;margin-top:32px;padding:34px;border-radius:var(--radius-lg);background:linear-gradient(120deg,var(--rose),var(--sky),var(--gold));background-size:220% 220%;color:var(--white);box-shadow:0 20px 50px rgba(201,122,147,0.24);}
+  .cta-line p{font-size:15px;margin-bottom:18px;}
+  .cta-line a{background:var(--white);color:var(--rose-deep);padding:13px 30px;border-radius:999px;font-weight:800;font-size:14.5px;display:inline-block;box-shadow:0 10px 22px rgba(0,0,0,0.12);transition:transform .2s;}
+  .cta-line a:hover{transform:translateY(-2px);}
+
+  footer{background:var(--ink);color:#C9C9DA;padding:40px 0 26px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;color:#9B9BB0;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .footer-inner .logo{color:var(--white);}
+
+  @media (max-width:760px){
+    .hamburger{display:flex;}
+    nav.main-nav{position:fixed;top:76px;left:0;right:0;background:var(--white);padding:20px 24px 28px;box-shadow:0 12px 24px rgba(43,43,61,0.1);transform:translateY(-110%);opacity:0;transition:transform .3s ease, opacity .3s ease;z-index:99;}
+    nav.main-nav.open{transform:translateY(0);opacity:1;}
+    nav.main-nav ul{flex-direction:column;align-items:flex-start;gap:16px;}
+    .value-grid{grid-template-columns:1fr;}
+    .timeline-item{flex-direction:column;gap:4px;}
+    .timeline-item .date{width:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><span>니즈<span class="brand">오션</span></span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="needs.html">고객사 NEEDS</a></li>
+        <li><a href="direction.html">사업방향</a></li>
+        <li><a href="ppt.html">고객사 PPT</a></li>
+        <li><a href="update.html">고객사 업데이트</a></li>
+        <li><a href="index.html#audience">이용대상</a></li>
+      </ul>
+    </nav>
+    <a href="login.html" class="cta-btn" id="headerCta">무료로 시작하기</a>
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge"><span style="color:var(--gold-deep)">◆</span> ABOUT NEEDSOCEAN</span>
+    <h1 class="page-title kr">마케팅 실무자들의 바다,<br>니즈오션을 소개합니다</h1>
+    <p class="page-desc">니즈오션은 코스맥스 마케팅·영업 실무자들이 고객사의 니즈와 사업방향, 제안 자료를 흩어짐 없이 한 곳에서 확인할 수 있도록 만든 사내 인사이트 플랫폼입니다.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="story-block">
+      <h2 class="kr">왜 니즈오션을 만들었나요?</h2>
+      <p>코스맥스는 국내외 수많은 뷰티 브랜드와 함께 일합니다. 그만큼 담당자마다 고객사의 니즈, 사업방향, 선호하는 제안 양식에 대한 정보가 메일함과 개인 폴더 곳곳에 흩어져 있었습니다.</p>
+      <p>니즈오션은 이런 정보를 한 곳에 모아, 새로운 담당자도 빠르게 고객사를 이해하고, 더 나은 제안을 준비할 수 있도록 돕기 위해 기획되었습니다.</p>
+    </div>
+
+    <div class="value-grid">
+      <div class="value-card rose">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8A6BB0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.5-9.2C1.2 8.2 3 5 6.3 5c2 0 3.4 1.2 4.2 2.4C11.3 6.2 12.7 5 14.7 5 18 5 19.8 8.2 18.5 11.3 16.5 15.9 12 20.5 12 20.5Z"/></svg></div>
+        <h3 class="kr">고객사 중심</h3>
+        <p>담당자가 아닌 고객사를 기준으로 정보를 정리해, 인수인계에도 흔들리지 않습니다.</p>
+      </div>
+      <div class="value-card sky">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5F9BBF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2 12.9 14.8 9.2 14.8 11.1 9.2Z"/></svg></div>
+        <h3 class="kr">실무 중심 설계</h3>
+        <p>제안서를 준비하는 실제 흐름에 맞춰 NEEDS·사업방향·PPT 순서로 구성했습니다.</p>
+      </div>
+      <div class="value-card gold">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7C79B8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="12" rx="1.6"/><path d="M9 20.5h6M12 16.5v4"/></svg></div>
+        <h3 class="kr">지속적인 업데이트</h3>
+        <p>고객사 정보와 제안 양식은 담당 조직의 검토를 거쳐 꾸준히 업데이트됩니다.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <h2 class="kr">니즈오션 연혁 (예시)</h2>
+      <div class="timeline-item">
+        <span class="date">2025.11</span>
+        <div class="txt"><h4 class="kr">서비스 기획 시작</h4><p>마케팅기획팀 내부 태스크포스로 니즈오션 기획이 시작되었습니다.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="date">2026.03</span>
+        <div class="txt"><h4 class="kr">사내 베타 테스트</h4><p>일부 브랜드 담당 조직을 대상으로 베타 버전을 시범 운영했습니다.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="date">2026.07</span>
+        <div class="txt"><h4 class="kr">임직원 대상 정식 오픈</h4><p>코스맥스 전 임직원을 대상으로 니즈오션을 정식 오픈했습니다.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-line">
+      <p class="kr">니즈오션과 함께 고객사를 더 깊이 이해해보세요</p>
+      <a href="login.html">회사 계정으로 시작하기</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo"><span>니즈오션</span></a>
+    <span>© 2026 NeedsOcean. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="data/session.js"></script>
+<script>
+  NeedsOceanSession.renderHeaderCta();
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mainNav').classList.toggle('open'));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>니즈오션 | 문의하기</title>
+<meta name="description" content="니즈오션 관련 문의는 이메일로 편하게 남겨주세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#C7AEE3; --rose-soft:#F3EEFB; --rose-deep:#8A6BB0;
+    --sky:#A9D6EA; --sky-soft:#EDF7FB; --sky-deep:#5F9BBF;
+    --gold:#D6C7ED; --gold-soft:#F6F1FB; --gold-deep:#7C79B8;
+    --ink:#2B2B3D; --ink-soft:#6B6B80; --white:#FFFFFF; --cream:#FCFBFF;
+    --shadow: 0 10px 30px rgba(43,43,61,0.06);
+    --radius-lg: 32px; --radius-md: 20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  .kr{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;font-weight:700;}
+  img,svg{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+  .container{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,252,245,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,43,61,0.06);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Malgun Gothic','Noto Sans KR',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.3px;color:var(--ink);}
+  .logo span.brand{background:linear-gradient(90deg,var(--rose-deep),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  nav.main-nav ul{display:flex;gap:32px;align-items:center;}
+  nav.main-nav a{font-size:15px;font-weight:600;color:var(--ink-soft);transition:color .2s;}
+  nav.main-nav a:hover{color:var(--ink);}
+  .cta-btn{background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);font-weight:600;font-size:14.5px;padding:12px 24px;border-radius:999px;box-shadow:0 8px 18px rgba(201,122,147,0.28);transition:transform .2s;white-space:nowrap;}
+  .cta-btn:hover{transform:translateY(-2px);}
+  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;}
+  .hamburger span{width:24px;height:3px;border-radius:3px;background:var(--ink);}
+
+  .page-hero{position:relative;padding:64px 0 40px;text-align:center;overflow:hidden;
+    background:radial-gradient(circle at 20% 20%, var(--sky-soft) 0%, transparent 45%),
+               radial-gradient(circle at 80% 15%, var(--rose-soft) 0%, transparent 45%),
+               var(--cream);}
+  .page-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--sky-soft);padding:8px 20px;border-radius:999px;font-size:13px;font-weight:600;color:var(--sky-deep);box-shadow:var(--shadow);margin-bottom:18px;}
+  .page-title{font-size:clamp(26px,3.6vw,38px);margin-bottom:14px;}
+  .page-desc{font-size:15px;color:var(--ink-soft);line-height:1.8;max-width:520px;margin:0 auto;}
+
+  .content-section{padding:20px 0 90px;}
+
+  .contact-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:40px;text-align:center;margin-bottom:28px;}
+  .contact-icon{width:64px;height:64px;border-radius:50%;background:var(--sky-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+  .contact-icon svg{width:28px;height:28px;}
+  .contact-card h2{font-size:18px;margin-bottom:8px;}
+  .contact-card p{font-size:13.5px;color:var(--ink-soft);margin-bottom:22px;}
+  .email-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--rose-deep),var(--sky-deep));color:var(--white);font-weight:700;font-size:15px;padding:15px 30px;border-radius:999px;box-shadow:0 12px 26px rgba(138,107,176,0.3);transition:transform .2s;}
+  .email-btn:hover{transform:translateY(-2px);}
+  .email-btn svg{width:16px;height:16px;}
+
+  .category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+  .category-card{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow);padding:20px;text-align:center;}
+  .category-card h3{font-size:13.5px;margin-bottom:6px;}
+  .category-card p{font-size:12px;color:var(--ink-soft);line-height:1.5;}
+
+  .response-note{background:var(--gold-soft);border-radius:16px;padding:16px 20px;font-size:13px;color:var(--ink);display:flex;gap:10px;align-items:flex-start;}
+  .response-note svg{width:16px;height:16px;color:var(--gold-deep);flex-shrink:0;margin-top:1px;}
+
+  footer{background:var(--ink);color:#C9C9DA;padding:40px 0 26px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;color:#9B9BB0;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .footer-inner .logo{color:var(--white);}
+
+  @media (max-width:760px){
+    .hamburger{display:flex;}
+    nav.main-nav{position:fixed;top:76px;left:0;right:0;background:var(--white);padding:20px 24px 28px;box-shadow:0 12px 24px rgba(43,43,61,0.1);transform:translateY(-110%);opacity:0;transition:transform .3s ease, opacity .3s ease;z-index:99;}
+    nav.main-nav.open{transform:translateY(0);opacity:1;}
+    nav.main-nav ul{flex-direction:column;align-items:flex-start;gap:16px;}
+    .category-grid{grid-template-columns:1fr;}
+    .contact-card{padding:28px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><span>니즈<span class="brand">오션</span></span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="needs.html">고객사 NEEDS</a></li>
+        <li><a href="direction.html">사업방향</a></li>
+        <li><a href="ppt.html">고객사 PPT</a></li>
+        <li><a href="update.html">고객사 업데이트</a></li>
+        <li><a href="index.html#audience">이용대상</a></li>
+      </ul>
+    </nav>
+    <a href="login.html" class="cta-btn" id="headerCta">무료로 시작하기</a>
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge"><span style="color:var(--rose-deep)">◆</span> CONTACT</span>
+    <h1 class="page-title kr">니즈오션에 문의하기</h1>
+    <p class="page-desc">서비스 이용, 제휴, 채용 등 어떤 문의든 아래 이메일로 편하게 남겨주세요.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="contact-card">
+      <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5F9BBF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg></div>
+      <h2 class="kr">이메일로 문의하기</h2>
+      <p>담당자가 직접 확인 후 답변드립니다.</p>
+      <a class="email-btn" href="mailto:seoyoon1.park@cosmax.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>
+        seoyoon1.park@cosmax.com
+      </a>
+    </div>
+
+    <div class="category-grid">
+      <div class="category-card">
+        <h3 class="kr">서비스 이용 문의</h3>
+        <p>로그인, 검색, 데이터 관련 질문</p>
+      </div>
+      <div class="category-card">
+        <h3 class="kr">제휴·데이터 등록 문의</h3>
+        <p>고객사 정보 등록 및 수정 요청</p>
+      </div>
+      <div class="category-card">
+        <h3 class="kr">채용 문의</h3>
+        <p>채용 페이지 참고 후 이메일 지원</p>
+      </div>
+    </div>
+
+    <div class="response-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <span>영업일 기준 1~2일 이내 답변드리고 있습니다. 코스맥스 임직원이신 경우, 사내 IT지원팀 문의도 함께 이용해보세요.</span>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo"><span>니즈오션</span></a>
+    <span>© 2026 NeedsOcean. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="data/session.js"></script>
+<script>
+  NeedsOceanSession.renderHeaderCta();
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mainNav').classList.toggle('open'));
+</script>
+
+</body>
+</html>

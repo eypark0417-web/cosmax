@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>니즈오션 | 채용</title>
+<meta name="description" content="니즈오션과 함께 성장할 코스맥스 동료를 찾습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#C7AEE3; --rose-soft:#F3EEFB; --rose-deep:#8A6BB0;
+    --sky:#A9D6EA; --sky-soft:#EDF7FB; --sky-deep:#5F9BBF;
+    --gold:#D6C7ED; --gold-soft:#F6F1FB; --gold-deep:#7C79B8;
+    --ink:#2B2B3D; --ink-soft:#6B6B80; --white:#FFFFFF; --cream:#FCFBFF;
+    --shadow: 0 10px 30px rgba(43,43,61,0.06);
+    --radius-lg: 32px; --radius-md: 20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  .kr{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;font-weight:700;}
+  img,svg{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+  .container{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,252,245,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,43,61,0.06);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Malgun Gothic','Noto Sans KR',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.3px;color:var(--ink);}
+  .logo span.brand{background:linear-gradient(90deg,var(--rose-deep),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  nav.main-nav ul{display:flex;gap:32px;align-items:center;}
+  nav.main-nav a{font-size:15px;font-weight:600;color:var(--ink-soft);transition:color .2s;}
+  nav.main-nav a:hover{color:var(--ink);}
+  .cta-btn{background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);font-weight:600;font-size:14.5px;padding:12px 24px;border-radius:999px;box-shadow:0 8px 18px rgba(201,122,147,0.28);transition:transform .2s;white-space:nowrap;}
+  .cta-btn:hover{transform:translateY(-2px);}
+  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;}
+  .hamburger span{width:24px;height:3px;border-radius:3px;background:var(--ink);}
+
+  .page-hero{position:relative;padding:64px 0 44px;text-align:center;overflow:hidden;
+    background:radial-gradient(circle at 20% 20%, var(--gold-soft) 0%, transparent 45%),
+               radial-gradient(circle at 80% 15%, var(--rose-soft) 0%, transparent 45%),
+               var(--cream);}
+  .page-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--gold-soft);padding:8px 20px;border-radius:999px;font-size:13px;font-weight:600;color:var(--gold-deep);box-shadow:var(--shadow);margin-bottom:18px;}
+  .page-title{font-size:clamp(28px,4vw,42px);margin-bottom:16px;line-height:1.35;}
+  .page-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.8;max-width:600px;margin:0 auto;}
+
+  .content-section{padding:20px 0 90px;}
+
+  .culture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
+  .culture-card{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow);padding:24px;text-align:center;}
+  .culture-card .emoji-icon{font-size:26px;margin-bottom:10px;}
+  .culture-card h3{font-size:14.5px;margin-bottom:6px;}
+  .culture-card p{font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+
+  .section-label{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sky-deep);margin-bottom:14px;}
+
+  .job-list{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;}
+  .job-card{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow);padding:24px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+  .job-card .job-info h3{font-size:16px;margin-bottom:6px;}
+  .job-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+  .job-tags span{font-size:11px;font-weight:700;color:var(--rose-deep);background:var(--rose-soft);padding:3px 10px;border-radius:999px;}
+  .job-card p{font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:520px;}
+  .apply-btn{background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);font-weight:700;font-size:13.5px;padding:11px 22px;border-radius:999px;white-space:nowrap;transition:transform .2s;box-shadow:0 8px 18px rgba(201,122,147,0.28);}
+  .apply-btn:hover{transform:translateY(-2px);}
+
+  .cta-line{text-align:center;margin-top:8px;padding:34px;border-radius:var(--radius-lg);background:linear-gradient(120deg,var(--rose),var(--sky),var(--gold));background-size:220% 220%;color:var(--white);box-shadow:0 20px 50px rgba(201,122,147,0.24);}
+  .cta-line p{font-size:15px;margin-bottom:6px;}
+  .cta-line .sub{font-size:13px;opacity:0.9;margin-bottom:18px;}
+  .cta-line a{background:var(--white);color:var(--rose-deep);padding:13px 30px;border-radius:999px;font-weight:800;font-size:14.5px;display:inline-block;box-shadow:0 10px 22px rgba(0,0,0,0.12);transition:transform .2s;}
+  .cta-line a:hover{transform:translateY(-2px);}
+
+  footer{background:var(--ink);color:#C9C9DA;padding:40px 0 26px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;color:#9B9BB0;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .footer-inner .logo{color:var(--white);}
+
+  @media (max-width:760px){
+    .hamburger{display:flex;}
+    nav.main-nav{position:fixed;top:76px;left:0;right:0;background:var(--white);padding:20px 24px 28px;box-shadow:0 12px 24px rgba(43,43,61,0.1);transform:translateY(-110%);opacity:0;transition:transform .3s ease, opacity .3s ease;z-index:99;}
+    nav.main-nav.open{transform:translateY(0);opacity:1;}
+    nav.main-nav ul{flex-direction:column;align-items:flex-start;gap:16px;}
+    .culture-grid{grid-template-columns:1fr;}
+    .job-card{flex-direction:column;}
+    .apply-btn{width:100%;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><span>니즈<span class="brand">오션</span></span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="needs.html">고객사 NEEDS</a></li>
+        <li><a href="direction.html">사업방향</a></li>
+        <li><a href="ppt.html">고객사 PPT</a></li>
+        <li><a href="update.html">고객사 업데이트</a></li>
+        <li><a href="index.html#audience">이용대상</a></li>
+      </ul>
+    </nav>
+    <a href="login.html" class="cta-btn" id="headerCta">무료로 시작하기</a>
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge"><span style="color:var(--rose-deep)">◆</span> JOIN NEEDSOCEAN</span>
+    <h1 class="page-title kr">니즈오션과 함께<br>성장할 동료를 찾습니다</h1>
+    <p class="page-desc">코스맥스 내부에서 마케팅 실무자를 위한 서비스를 직접 만들고 개선해나갈 팀원을 모집합니다. (아래 채용 정보는 예시로 작성된 가상 공고입니다)</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-label">NEEDSOCEAN CULTURE</div>
+    <div class="culture-grid">
+      <div class="culture-card">
+        <div class="emoji-icon">🌊</div>
+        <h3 class="kr">실무자 중심 문화</h3>
+        <p>실제 마케팅 현장의 목소리를 가장 먼저 반영합니다.</p>
+      </div>
+      <div class="culture-card">
+        <div class="emoji-icon">🕒</div>
+        <h3 class="kr">자율출근제</h3>
+        <p>오전 8~10시 사이 자유롭게 출근 시간을 선택합니다.</p>
+      </div>
+      <div class="culture-card">
+        <div class="emoji-icon">📚</div>
+        <h3 class="kr">사내 스터디 지원</h3>
+        <p>직무 관련 스터디·세미나 비용을 지원합니다.</p>
+      </div>
+    </div>
+
+    <div class="section-label">OPEN POSITIONS</div>
+    <div class="job-list">
+      <div class="job-card">
+        <div class="job-info">
+          <h3 class="kr">프로덕트 매니저</h3>
+          <div class="job-tags"><span>경력 3년 이상</span><span>정규직</span><span>서울 코스맥스 본사</span></div>
+          <p>니즈오션의 서비스 기획과 기능 우선순위를 결정하고, 실무 부서와의 협업을 리드합니다.</p>
+        </div>
+        <a class="apply-btn" href="mailto:seoyoon1.park@cosmax.com?subject=[니즈오션 채용] 프로덕트 매니저 지원">지원하기</a>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h3 class="kr">프론트엔드 개발자</h3>
+          <div class="job-tags"><span>경력 2년 이상</span><span>정규직</span><span>서울 코스맥스 본사</span></div>
+          <p>니즈오션 웹 서비스의 UI/UX를 구현하고, 사용성 개선을 위한 실험을 진행합니다.</p>
+        </div>
+        <a class="apply-btn" href="mailto:seoyoon1.park@cosmax.com?subject=[니즈오션 채용] 프론트엔드 개발자 지원">지원하기</a>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h3 class="kr">데이터 분석가</h3>
+          <div class="job-tags"><span>신입/경력</span><span>정규직</span><span>서울 코스맥스 본사</span></div>
+          <p>고객사 데이터를 분석해 서비스 개선 방향을 제안하고 대시보드를 운영합니다.</p>
+        </div>
+        <a class="apply-btn" href="mailto:seoyoon1.park@cosmax.com?subject=[니즈오션 채용] 데이터 분석가 지원">지원하기</a>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h3 class="kr">마케팅 콘텐츠 기획자</h3>
+          <div class="job-tags"><span>경력 1년 이상</span><span>계약직(전환 가능)</span><span>서울 코스맥스 본사</span></div>
+          <p>고객사 사업방향·니즈 데이터를 콘텐츠로 정리하고, 서비스 내 정보 품질을 관리합니다.</p>
+        </div>
+        <a class="apply-btn" href="mailto:seoyoon1.park@cosmax.com?subject=[니즈오션 채용] 마케팅 콘텐츠 기획자 지원">지원하기</a>
+      </div>
+    </div>
+
+    <div class="cta-line">
+      <p class="kr">원하는 포지션이 없나요?</p>
+      <p class="sub">언제든 자유 지원서를 보내주세요.</p>
+      <a href="mailto:seoyoon1.park@cosmax.com?subject=[니즈오션 채용] 자유 지원">이메일로 지원하기</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo"><span>니즈오션</span></a>
+    <span>© 2026 NeedsOcean. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="data/session.js"></script>
+<script>
+  NeedsOceanSession.renderHeaderCta();
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mainNav').classList.toggle('open'));
+</script>
+
+</body>
+</html>

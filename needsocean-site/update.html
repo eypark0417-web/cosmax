@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>니즈오션 | 고객사 업데이트</title>
+<meta name="description" content="담당자가 작성한 고객사 소식을 AI가 자동으로 요약·정리합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#C7AEE3; --rose-soft:#F3EEFB; --rose-deep:#8A6BB0;
+    --sky:#A9D6EA; --sky-soft:#EDF7FB; --sky-deep:#5F9BBF;
+    --gold:#D6C7ED; --gold-soft:#F6F1FB; --gold-deep:#7C79B8;
+    --ink:#2B2B3D; --ink-soft:#6B6B80; --white:#FFFFFF; --cream:#FCFBFF;
+    --shadow: 0 10px 30px rgba(43,43,61,0.06);
+    --radius-lg: 32px; --radius-md: 20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  .kr{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;font-weight:700;}
+  img,svg{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+  .container{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,252,245,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,43,61,0.06);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Malgun Gothic','Noto Sans KR',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.3px;color:var(--ink);}
+  .logo span.brand{background:linear-gradient(90deg,var(--rose-deep),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  nav.main-nav ul{display:flex;gap:28px;align-items:center;}
+  nav.main-nav a{font-size:15px;font-weight:600;color:var(--ink-soft);transition:color .2s;}
+  nav.main-nav a.active{color:var(--rose-deep);}
+  nav.main-nav a:hover{color:var(--ink);}
+  .cta-btn{background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);font-weight:600;font-size:14.5px;padding:12px 24px;border-radius:999px;box-shadow:0 8px 18px rgba(201,122,147,0.28);transition:transform .2s;white-space:nowrap;}
+  .cta-btn:hover{transform:translateY(-2px);}
+  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;}
+  .hamburger span{width:24px;height:3px;border-radius:3px;background:var(--ink);}
+
+  .page-hero{position:relative;padding:56px 0 32px;overflow:hidden;
+    background:radial-gradient(circle at 15% 20%, var(--rose-soft) 0%, transparent 45%),
+               radial-gradient(circle at 85% 10%, var(--sky-soft) 0%, transparent 45%),
+               var(--cream);}
+  .page-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--rose-soft);padding:8px 20px;border-radius:999px;font-size:13px;font-weight:600;color:var(--rose-deep);box-shadow:var(--shadow);margin-bottom:16px;}
+  .page-title{font-size:clamp(26px,3.6vw,36px);margin-bottom:12px;}
+  .page-desc{font-size:15px;color:var(--ink-soft);line-height:1.7;max-width:560px;}
+
+  .content-section{padding:8px 0 90px;}
+
+  .form-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:40px;position:relative;overflow:hidden;}
+  .form-card::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--rose-soft),var(--sky-soft));z-index:0;}
+
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;position:relative;z-index:1;}
+  .field{margin-bottom:18px;position:relative;z-index:1;}
+  .field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+  .field label .req{color:var(--rose-deep);margin-left:2px;}
+  .field select,
+  .field input{
+    width:100%;background:var(--cream);border:2px solid transparent;border-radius:14px;
+    padding:13px 16px;font-family:inherit;font-size:14.5px;color:var(--ink);outline:none;
+    transition:border-color .2s, background .2s;
+  }
+  .field select:focus, .field input:focus{border-color:var(--sky);background:var(--white);}
+  .field input::placeholder{color:#BEBECC;}
+
+  .ai-note{
+    display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft);
+    border-radius:14px;padding:14px 16px;margin-bottom:12px;position:relative;z-index:1;
+  }
+  .ai-note svg{width:17px;height:17px;color:var(--gold-deep);flex-shrink:0;margin-top:1px;}
+  .ai-note p{font-size:13px;color:var(--ink);line-height:1.6;}
+  .ai-note b{color:var(--gold-deep);}
+
+  textarea{
+    width:100%;min-height:160px;background:var(--cream);border:2px solid transparent;border-radius:14px;
+    padding:16px;font-family:inherit;font-size:14.5px;color:var(--ink);outline:none;resize:vertical;
+    line-height:1.6;transition:border-color .2s, background .2s;position:relative;z-index:1;
+  }
+  textarea:focus{border-color:var(--sky);background:var(--white);}
+  textarea::placeholder{color:#BEBECC;}
+
+  .ai-preview{
+    margin-top:14px;background:var(--sky-soft);border-radius:14px;padding:16px 18px;
+    display:none;position:relative;z-index:1;
+  }
+  .ai-preview.show{display:block;}
+  .ai-preview .ai-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .ai-preview .ai-head svg{width:16px;height:16px;color:var(--sky-deep);}
+  .ai-preview .ai-head span{font-size:12.5px;font-weight:700;color:var(--sky-deep);}
+  .ai-preview .ai-point{margin-bottom:10px;}
+  .ai-preview .ai-point:last-child{margin-bottom:0;}
+  .ai-preview .ai-point h4{font-size:13.5px;color:var(--ink);margin-bottom:2px;}
+  .ai-preview .ai-point p{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+
+  .file-drop{
+    background:var(--cream);border:2px dashed var(--sky);border-radius:14px;
+    padding:20px;text-align:center;cursor:pointer;transition:border-color .2s, background .2s;
+    position:relative;z-index:1;margin-top:10px;
+  }
+  .file-drop:hover{border-color:var(--rose-deep);background:var(--white);}
+  .file-drop.has-file{border-style:solid;border-color:var(--gold-deep);background:var(--gold-soft);}
+  .file-drop-inner{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink-soft);font-size:13.5px;}
+  .file-drop-inner svg{width:22px;height:22px;color:var(--sky-deep);}
+  .file-drop.has-file .file-drop-inner svg{color:var(--gold-deep);}
+  .file-drop-remove{
+    display:none;margin-top:8px;font-size:12px;font-weight:700;color:var(--rose-deep);
+    cursor:pointer;text-decoration:underline;
+  }
+  .file-drop.has-file .file-drop-remove{display:inline-block;}
+  .file-hint{font-size:12px;color:var(--ink-soft);margin-top:8px;position:relative;z-index:1;}
+
+  .submit-btn{
+    width:100%;padding:16px 0;border-radius:14px;margin-top:8px;
+    background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);
+    font-weight:700;font-size:15.5px;box-shadow:0 12px 26px rgba(201,122,147,0.3);
+    transition:transform .2s, box-shadow .2s;position:relative;z-index:1;
+  }
+  .submit-btn:hover{transform:translateY(-2px);}
+
+  .success-panel{display:none;text-align:center;position:relative;z-index:1;}
+  .success-panel .icon-circle{width:64px;height:64px;border-radius:50%;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+  .success-panel .icon-circle svg{width:28px;height:28px;}
+  .success-panel h2{font-size:22px;margin-bottom:10px;}
+  .success-panel p{font-size:14px;color:var(--ink-soft);line-height:1.7;margin-bottom:24px;}
+  .success-panel .btn-outline{
+    padding:13px 26px;border-radius:999px;font-weight:700;font-size:14.5px;
+    border:2px solid var(--ink);color:var(--ink);display:inline-block;transition:all .2s;
+  }
+  .success-panel .btn-outline:hover{background:var(--ink);color:var(--white);}
+  .success-panel .btn-primary{
+    padding:13px 26px;border-radius:999px;font-weight:700;font-size:14.5px;
+    background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);
+    box-shadow:0 10px 24px rgba(201,122,147,0.28);transition:transform .2s;
+  }
+  .success-panel .btn-primary:hover{transform:translateY(-2px);}
+
+  footer{background:var(--ink);color:#C9C9DA;padding:40px 0 26px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;color:#9B9BB0;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .footer-inner .logo{color:var(--white);}
+
+  @media (max-width:760px){
+    .hamburger{display:flex;}
+    nav.main-nav{position:fixed;top:76px;left:0;right:0;background:var(--white);padding:20px 24px 28px;box-shadow:0 12px 24px rgba(43,43,61,0.1);transform:translateY(-110%);opacity:0;transition:transform .3s ease, opacity .3s ease;z-index:99;}
+    nav.main-nav.open{transform:translateY(0);opacity:1;}
+    nav.main-nav ul{flex-direction:column;align-items:flex-start;gap:16px;}
+    .field-row{grid-template-columns:1fr;gap:0;}
+    .form-card{padding:26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><span>니즈<span class="brand">오션</span></span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="needs.html">고객사 NEEDS</a></li>
+        <li><a href="direction.html">사업방향</a></li>
+        <li><a href="ppt.html">고객사 PPT</a></li>
+        <li><a href="update.html" class="active">고객사 업데이트</a></li>
+        <li><a href="index.html#audience">이용대상</a></li>
+      </ul>
+    </nav>
+    <a href="login.html" class="cta-btn" id="headerCta">무료로 시작하기</a>
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge"><span style="color:var(--gold-deep)">◆</span> 실무자 제보 · AI 자동 정리</span>
+    <h1 class="page-title kr">고객사 업데이트 작성하기</h1>
+    <p class="page-desc">회의나 통화에서 얻은 고객사 소식을 편하게 적어주세요. 정리는 AI가 대신해드립니다.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="form-card" id="formCard">
+      <form id="updateForm" novalidate>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="dept">부서<span class="req">*</span></label>
+            <select id="dept" required>
+              <option value="" disabled selected>부서를 선택해주세요</option>
+              <option>마케팅기획팀</option>
+              <option>국내영업팀</option>
+              <option>해외영업팀</option>
+              <option>브랜드전략팀</option>
+              <option>연구개발(R&amp;D)팀</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="empName">이름<span class="req">*</span></label>
+            <input type="text" id="empName" placeholder="예: 박서윤" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="empEmail">사내 이메일</label>
+            <input type="text" id="empEmail" placeholder="이름@cosmax.com">
+          </div>
+          <div class="field">
+            <label for="clientName">고객사명<span class="req">*</span></label>
+            <input type="text" id="clientName" placeholder="예: 롬앤" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="category">업데이트 항목<span class="req">*</span></label>
+          <select id="category" required>
+            <option value="" disabled selected>어떤 정보인가요?</option>
+            <option value="needs">고객사 NEEDS</option>
+            <option value="direction">사업방향</option>
+            <option value="ppt">고객사 PPT / 제안 양식</option>
+            <option value="etc">기타 소식</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="content">내용<span class="req">*</span></label>
+          <div class="ai-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+            <p><b>편하게 메모하듯 적어주세요.</b> 회의 내용, 통화 요약, 카톡 대화라도 괜찮아요. 직원이 작성한 내용은 AI가 자동으로 핵심만 요약·정리해서 니즈오션에 반영합니다.</p>
+          </div>
+          <textarea id="content" placeholder="예) 오늘 롬앤 마케팅팀과 통화했는데, 하반기에 동남아 온라인 채널을 더 키운다고 함. 인플루언서 마케팅 예산도 늘릴 계획이라고 들었음. 숏폼 콘텐츠 제작 관련해서 우리 쪽 제안을 기대하고 있다고 함." required></textarea>
+          <div class="ai-preview" id="aiPreview">
+            <div class="ai-head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>AI 요약 미리보기 (예시)</span>
+            </div>
+            <div id="aiPreviewList"></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pptFile">제안서 파일 첨부 <span style="color:var(--ink-soft);font-weight:400;">(선택)</span></label>
+          <div class="file-drop" id="fileDrop">
+            <input type="file" id="pptFile" accept=".ppt,.pptx,.pdf,.key" style="display:none;">
+            <div class="file-drop-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+              <span id="fileDropText">클릭해서 PPT·PPTX·PDF 파일을 선택해주세요</span>
+            </div>
+            <span class="file-drop-remove" id="fileRemoveBtn">첨부 취소</span>
+          </div>
+          <p class="file-hint">파일은 니즈오션 서버에 실제 업로드되지 않고, 파일명만 기록되는 데모 기능입니다.</p>
+        </div>
+
+        <button type="submit" class="submit-btn">업데이트 제출하기</button>
+      </form>
+
+      <div class="success-panel" id="successPanel">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7C79B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 6.5"/></svg>
+        </div>
+        <h2 class="kr">제출이 완료되었습니다!</h2>
+        <p>AI가 요약한 내용이 해당 배너에 바로 반영되었습니다.<br>소중한 제보 감사합니다.</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <a href="#" id="goToBannerLink" class="btn-primary" style="display:none;">해당 배너에서 확인하기 →</a>
+          <a href="index.html" class="btn-outline">홈으로 돌아가기</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo"><span>니즈오션</span></a>
+    <span>© 2026 NeedsOcean. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="data/session.js"></script>
+<script src="data/clients.js"></script>
+<script src="data/updates.js"></script>
+<script>
+  NeedsOceanSession.renderHeaderCta();
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mainNav').classList.toggle('open'));
+
+  if (!NeedsOceanSession.isLoggedIn()) {
+    document.getElementById('formCard').innerHTML = NeedsOceanSession.gateHtml('로그인 후 고객사 업데이트를 작성할 수 있어요.');
+  } else {
+
+  const contentInput = document.getElementById('content');
+  const aiPreview = document.getElementById('aiPreview');
+  const aiPreviewList = document.getElementById('aiPreviewList');
+  let debounceTimer;
+
+  const fileInput = document.getElementById('pptFile');
+  const fileDrop = document.getElementById('fileDrop');
+  const fileDropText = document.getElementById('fileDropText');
+  const fileRemoveBtn = document.getElementById('fileRemoveBtn');
+  const DEFAULT_FILE_TEXT = '클릭해서 PPT·PPTX·PDF 파일을 선택해주세요';
+
+  function formatFileSize(bytes) {
+    if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + 'KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
+  }
+
+  fileDrop.addEventListener('click', (e) => {
+    if (e.target === fileRemoveBtn) return;
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', () => {
+    const f = fileInput.files[0];
+    if (f) {
+      fileDrop.classList.add('has-file');
+      fileDropText.textContent = `📎 ${f.name} (${formatFileSize(f.size)})`;
+    } else {
+      fileDrop.classList.remove('has-file');
+      fileDropText.textContent = DEFAULT_FILE_TEXT;
+    }
+  });
+
+  fileRemoveBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    fileInput.value = '';
+    fileDrop.classList.remove('has-file');
+    fileDropText.textContent = DEFAULT_FILE_TEXT;
+  });
+
+  contentInput.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const text = contentInput.value.trim();
+    if (text.length < 15) {
+      aiPreview.classList.remove('show');
+      return;
+    }
+    debounceTimer = setTimeout(() => {
+      const points = NeedsOceanUpdates.summarizePoints(text);
+      if (points.length === 0) {
+        aiPreview.classList.remove('show');
+        return;
+      }
+      aiPreviewList.innerHTML = points.map(p => `
+        <div class="ai-point">
+          <h4 class="kr">${NeedsOceanUpdates.escapeHtml(p.title)}</h4>
+          <p>${NeedsOceanUpdates.escapeHtml(p.desc)}</p>
+        </div>
+      `).join('');
+      aiPreview.classList.add('show');
+    }, 400);
+  });
+
+  const CATEGORY_PAGE = { needs: 'needs.html', direction: 'direction.html', ppt: 'ppt.html', etc: null };
+
+  document.getElementById('updateForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const dept = document.getElementById('dept').value;
+    const empName = document.getElementById('empName').value.trim();
+    const empEmail = document.getElementById('empEmail').value.trim();
+    const clientName = document.getElementById('clientName').value.trim();
+    const category = document.getElementById('category').value;
+    const content = contentInput.value.trim();
+    if (!dept || !empName || !clientName || !category || !content) return;
+
+    const matched = NeedsOceanUpdates.findClientMatch(clientName);
+    const attachedFile = fileInput.files[0];
+    const entry = {
+      id: 'upd_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+      clientName, dept, empName, empEmail, category, content,
+      summary: NeedsOceanUpdates.summarizePoints(content),
+      matchedId: matched ? matched.id : null,
+      file: attachedFile ? { name: attachedFile.name, size: attachedFile.size, type: attachedFile.type } : null,
+      createdAt: new Date().toISOString()
+    };
+    NeedsOceanUpdates.saveUpdate(entry);
+
+    document.getElementById('updateForm').style.display = 'none';
+    document.getElementById('successPanel').style.display = 'block';
+
+    const page = CATEGORY_PAGE[category];
+    const linkEl = document.getElementById('goToBannerLink');
+    if (page) {
+      const elId = NeedsOceanUpdates.clientElementId(entry.matchedId, clientName);
+      linkEl.href = page + '#client-' + elId;
+      linkEl.style.display = 'inline-block';
+    } else {
+      linkEl.style.display = 'none';
+    }
+  });
+
+  }
+</script>
+
+</body>
+</html>

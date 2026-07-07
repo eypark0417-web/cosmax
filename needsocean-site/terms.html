@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>니즈오션 | 이용약관</title>
+<meta name="description" content="니즈오션 서비스 이용약관입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#C7AEE3; --rose-soft:#F3EEFB; --rose-deep:#8A6BB0;
+    --sky:#A9D6EA; --sky-soft:#EDF7FB; --sky-deep:#5F9BBF;
+    --gold:#D6C7ED; --gold-soft:#F6F1FB; --gold-deep:#7C79B8;
+    --ink:#2B2B3D; --ink-soft:#6B6B80; --white:#FFFFFF; --cream:#FCFBFF;
+    --shadow: 0 10px 30px rgba(43,43,61,0.06);
+    --radius-lg: 32px; --radius-md: 20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  .kr{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;font-weight:700;}
+  img,svg{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+  .container{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,252,245,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,43,61,0.06);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Malgun Gothic','Noto Sans KR',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.3px;color:var(--ink);}
+  .logo span.brand{background:linear-gradient(90deg,var(--rose-deep),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  nav.main-nav ul{display:flex;gap:32px;align-items:center;}
+  nav.main-nav a{font-size:15px;font-weight:600;color:var(--ink-soft);transition:color .2s;}
+  nav.main-nav a:hover{color:var(--ink);}
+  .cta-btn{background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);font-weight:600;font-size:14.5px;padding:12px 24px;border-radius:999px;box-shadow:0 8px 18px rgba(201,122,147,0.28);transition:transform .2s;white-space:nowrap;}
+  .cta-btn:hover{transform:translateY(-2px);}
+  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;}
+  .hamburger span{width:24px;height:3px;border-radius:3px;background:var(--ink);}
+
+  .page-hero{position:relative;padding:56px 0 30px;overflow:hidden;
+    background:radial-gradient(circle at 15% 20%, var(--rose-soft) 0%, transparent 45%),
+               radial-gradient(circle at 85% 10%, var(--sky-soft) 0%, transparent 45%),
+               var(--cream);}
+  .page-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--rose-soft);padding:8px 20px;border-radius:999px;font-size:13px;font-weight:600;color:var(--rose-deep);box-shadow:var(--shadow);margin-bottom:16px;}
+  .page-title{font-size:clamp(24px,3.2vw,32px);margin-bottom:8px;}
+  .page-meta{font-size:12.5px;color:var(--ink-soft);}
+
+  .content-section{padding:24px 0 90px;}
+  .disclaimer{
+    background:var(--gold-soft);border-radius:14px;padding:14px 18px;
+    font-size:12.5px;color:var(--ink);line-height:1.6;margin-bottom:32px;
+    display:flex;gap:10px;align-items:flex-start;
+  }
+  .disclaimer svg{width:15px;height:15px;color:var(--gold-deep);flex-shrink:0;margin-top:2px;}
+
+  .terms-doc{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:40px;}
+  .terms-doc article{margin-bottom:26px;}
+  .terms-doc article:last-child{margin-bottom:0;}
+  .terms-doc h2{font-size:15.5px;margin-bottom:10px;color:var(--ink);}
+  .terms-doc p{font-size:13.5px;color:var(--ink-soft);line-height:1.8;}
+  .terms-doc ol{margin:8px 0 0 0;padding-left:0;counter-reset:item;}
+  .terms-doc ol li{
+    font-size:13.5px;color:var(--ink-soft);line-height:1.8;
+    padding-left:22px;position:relative;margin-bottom:4px;
+  }
+  .terms-doc ol li::before{
+    content:counter(item) '.';counter-increment:item;
+    position:absolute;left:0;font-weight:700;color:var(--rose-deep);
+  }
+
+  footer{background:var(--ink);color:#C9C9DA;padding:40px 0 26px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;color:#9B9BB0;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .footer-inner .logo{color:var(--white);}
+
+  @media (max-width:760px){
+    .hamburger{display:flex;}
+    nav.main-nav{position:fixed;top:76px;left:0;right:0;background:var(--white);padding:20px 24px 28px;box-shadow:0 12px 24px rgba(43,43,61,0.1);transform:translateY(-110%);opacity:0;transition:transform .3s ease, opacity .3s ease;z-index:99;}
+    nav.main-nav.open{transform:translateY(0);opacity:1;}
+    nav.main-nav ul{flex-direction:column;align-items:flex-start;gap:16px;}
+    .terms-doc{padding:26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><span>니즈<span class="brand">오션</span></span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="needs.html">고객사 NEEDS</a></li>
+        <li><a href="direction.html">사업방향</a></li>
+        <li><a href="ppt.html">고객사 PPT</a></li>
+        <li><a href="update.html">고객사 업데이트</a></li>
+        <li><a href="index.html#audience">이용대상</a></li>
+      </ul>
+    </nav>
+    <a href="login.html" class="cta-btn" id="headerCta">무료로 시작하기</a>
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge"><span style="color:var(--gold-deep)">◆</span> TERMS OF SERVICE</span>
+    <h1 class="page-title kr">니즈오션 이용약관</h1>
+    <p class="page-meta">시행일 2026년 7월 1일 · 최종 수정일 2026년 7월 1일</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="disclaimer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.2v.1"/></svg>
+      <span>본 약관은 니즈오션 서비스 데모를 위해 예시로 작성된 문서로, 실제 법적 효력이 있는 약관이 아닙니다.</span>
+    </div>
+
+    <div class="terms-doc">
+
+      <article>
+        <h2 class="kr">제1조 (목적)</h2>
+        <p>본 약관은 코스맥스(이하 "회사")가 제공하는 사내 마케팅 인사이트 플랫폼 '니즈오션'(이하 "서비스")의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항을 정하는 것을 목적으로 합니다.</p>
+      </article>
+
+      <article>
+        <h2 class="kr">제2조 (정의)</h2>
+        <ol>
+          <li>"서비스"란 회사가 제공하는 고객사 니즈, 사업방향, PPT 제안 양식 등의 정보 열람 플랫폼을 말합니다.</li>
+          <li>"이용자"란 회사 계정(@cosmax.com)으로 로그인하여 서비스를 이용하는 임직원을 말합니다.</li>
+          <li>"고객사 정보"란 서비스 내에 등록된 브랜드별 사업방향, 니즈, 제품, 제안 양식 등의 데이터를 말합니다.</li>
+        </ol>
+      </article>
+
+      <article>
+        <h2 class="kr">제3조 (이용자의 의무)</h2>
+        <ol>
+          <li>이용자는 본인의 회사 계정을 제3자에게 공유하거나 대여할 수 없습니다.</li>
+          <li>이용자는 서비스 내 고객사 정보를 사내 업무 목적 외의 용도로 사용하거나 외부에 유출해서는 안 됩니다.</li>
+          <li>이용자는 서비스 이용 중 취득한 정보의 정확성에 대해 스스로 최종 확인할 책임이 있습니다.</li>
+        </ol>
+      </article>
+
+      <article>
+        <h2 class="kr">제4조 (서비스의 제공 및 변경)</h2>
+        <p>회사는 서비스의 품질 향상을 위해 서비스의 내용을 수시로 변경하거나 일부 기능을 중단할 수 있으며, 이 경우 공지사항을 통해 사전에 안내합니다.</p>
+      </article>
+
+      <article>
+        <h2 class="kr">제5조 (데이터의 정확성)</h2>
+        <p>서비스 내 고객사 정보는 담당 조직의 검토를 거쳐 제공되나, 실제 계약 조건이나 최신 협의 내용과 차이가 있을 수 있으므로 중요한 의사결정 시에는 반드시 담당자와 재확인해야 합니다.</p>
+      </article>
+
+      <article>
+        <h2 class="kr">제6조 (면책조항)</h2>
+        <p>회사는 이용자가 서비스에 게재된 정보를 신뢰함으로써 발생한 손해에 대해 회사의 고의 또는 중대한 과실이 없는 한 책임을 지지 않습니다.</p>
+      </article>
+
+      <article>
+        <h2 class="kr">제7조 (문의)</h2>
+        <p>본 약관 및 서비스 이용에 관한 문의는 <a href="mailto:seoyoon1.park@cosmax.com" style="color:var(--sky-deep);font-weight:700;">seoyoon1.park@cosmax.com</a> 또는 문의하기 페이지를 통해 접수해주세요.</p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo"><span>니즈오션</span></a>
+    <span>© 2026 NeedsOcean. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="data/session.js"></script>
+<script>
+  NeedsOceanSession.renderHeaderCta();
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mainNav').classList.toggle('open'));
+</script>
+
+</body>
+</html>

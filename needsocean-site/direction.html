@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>니즈오션 | 고객사 사업방향</title>
+<meta name="description" content="니즈오션에 등록된 전체 고객사의 사업방향을 자세히 확인하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#C7AEE3; --rose-soft:#F3EEFB; --rose-deep:#8A6BB0;
+    --sky:#A9D6EA; --sky-soft:#EDF7FB; --sky-deep:#5F9BBF;
+    --gold:#D6C7ED; --gold-soft:#F6F1FB; --gold-deep:#7C79B8;
+    --pink:var(--rose); --pink-soft:var(--rose-soft);
+    --yellow:var(--gold); --yellow-soft:var(--gold-soft);
+    --ink:#2B2B3D; --ink-soft:#6B6B80; --white:#FFFFFF; --cream:#FCFBFF;
+    --shadow: 0 10px 30px rgba(43,43,61,0.06);
+    --radius-lg: 32px; --radius-md: 20px; --radius-sm: 14px;
+    --accent: var(--sky-deep); --accent-soft: var(--sky-soft);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif;
+    color:var(--ink); background:var(--cream); overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  .kr{font-family:'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif; font-weight:700;}
+  img,svg{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+  .container{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,252,245,0.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(43,43,61,0.06);
+  }
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Malgun Gothic','Noto Sans KR',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.3px;color:var(--ink);}
+  .logo span.brand{background:linear-gradient(90deg,var(--rose-deep),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  nav.main-nav ul{display:flex;gap:32px;align-items:center;}
+  nav.main-nav a{font-size:15px;font-weight:600;color:var(--ink-soft);position:relative;padding:6px 0;transition:color .2s;}
+  nav.main-nav a.active{color:var(--sky-deep);}
+  nav.main-nav a:hover{color:var(--ink);}
+  .cta-btn{
+    background:linear-gradient(135deg,var(--rose-deep),var(--gold-deep));color:var(--white);
+    font-weight:600;font-size:14.5px;letter-spacing:0.2px;padding:12px 24px;border-radius:999px;
+    box-shadow:0 8px 18px rgba(201,122,147,0.28);transition:transform .2s, box-shadow .2s;white-space:nowrap;
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(201,122,147,0.36);}
+  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:101;}
+  .hamburger span{width:24px;height:3px;border-radius:3px;background:var(--ink);transition:all .3s;}
+
+  .page-hero{
+    position:relative;padding:52px 0 36px;overflow:hidden;
+    background:radial-gradient(circle at 15% 20%, var(--sky-soft) 0%, transparent 45%),
+               radial-gradient(circle at 85% 10%, var(--rose-soft) 0%, transparent 45%),
+               var(--cream);
+  }
+  .breadcrumb{font-size:13px;color:var(--ink-soft);margin-bottom:20px;}
+  .breadcrumb a{font-weight:600;color:var(--sky-deep);}
+  .breadcrumb a:hover{color:var(--rose-deep);}
+  .page-badge{
+    display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--accent-soft);
+    padding:8px 20px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:0.4px;
+    color:var(--accent);box-shadow:var(--shadow);margin-bottom:16px;
+  }
+  .page-title{font-size:clamp(26px,3.6vw,38px);margin-bottom:12px;}
+  .page-desc{
+    font-size:14.5px;color:var(--ink-soft);line-height:1.75;max-width:100%;
+    display:inline-block;background:var(--white);border-radius:16px;
+    padding:16px 24px;box-shadow:var(--shadow);border-left:3px solid #F5E6B0;
+  }
+
+  .content-section{padding:8px 0 90px;}
+
+  .accordion-item{
+    background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow);
+    margin-bottom:14px;overflow:hidden;
+  }
+  .accordion-header{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:20px 24px;cursor:pointer;
+  }
+  .accordion-header .left{display:flex;align-items:center;gap:14px;min-width:0;}
+  .avatar{
+    width:44px;height:44px;border-radius:50%;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);
+    font-family:'Poppins',sans-serif;font-size:14px;flex-shrink:0;
+  }
+  .accordion-title{min-width:0;}
+  .accordion-title h3{font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .accordion-title .tag{
+    font-size:10.5px;font-weight:700;color:var(--rose-deep);background:var(--rose-soft);
+    padding:3px 9px;border-radius:999px;
+  }
+  .accordion-title .summary{font-size:12.5px;color:var(--ink-soft);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .chevron{transition:transform .25s;flex-shrink:0;color:var(--ink-soft);}
+  .accordion-item.open .chevron{transform:rotate(180deg);}
+  .accordion-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .accordion-body-inner{padding:0 24px 24px;}
+
+  .direction-full{font-size:14.5px;line-height:1.85;color:var(--ink);margin-bottom:18px;}
+  .highlight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .highlight-item{
+    display:flex;gap:10px;align-items:flex-start;background:var(--cream);
+    border-radius:14px;padding:14px 16px;
+  }
+  .highlight-item .num{
+    font-family:'Poppins',sans-serif;font-weight:800;font-size:12.5px;color:var(--accent);
+    background:var(--accent-soft);width:24px;height:24px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
+  }
+  .highlight-item h4{font-size:13.5px;margin-bottom:3px;}
+  .highlight-item p{font-size:12px;color:var(--ink-soft);line-height:1.5;}
+
+  .product-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+  .product-chips span{
+    font-size:12px;font-weight:600;color:var(--ink);background:var(--gold-soft);
+    padding:5px 12px;border-radius:999px;
+  }
+
+  .report-block{
+    background:var(--gold-soft);border:1px dashed var(--gold);border-radius:14px;
+    padding:14px 16px;margin-top:12px;
+  }
+  .report-block .report-block-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+  .report-block-head b{font-size:12.5px;color:var(--ink);}
+  .report-block .report-tag{
+    font-size:10px;font-weight:700;color:var(--gold-deep);background:var(--white);
+    padding:2px 8px;border-radius:999px;
+  }
+  .report-point{margin-bottom:10px;}
+  .report-point:last-child{margin-bottom:0;}
+  .report-point h4{font-size:13.5px;margin-bottom:3px;}
+  .report-point p{font-size:12px;color:var(--ink-soft);line-height:1.5;}
+  .report-file{
+    display:inline-block;font-size:12px;font-weight:600;color:var(--gold-deep);
+    background:var(--white);border:1px solid var(--gold);border-radius:999px;
+    padding:4px 11px;margin-bottom:8px;
+  }
+  .report-meta{font-size:11px;color:var(--ink-soft);margin-top:8px;display:block;}
+  .report-meta .delete-link{color:var(--rose-deep);font-weight:700;margin-left:6px;cursor:pointer;}
+  .report-meta .delete-link:hover{text-decoration:underline;}
+  .new-report-badge{
+    font-size:10.5px;font-weight:700;color:var(--gold-deep);background:var(--gold-soft);
+    padding:3px 9px;border-radius:999px;
+  }
+
+  footer{background:var(--ink);color:#C9C9DA;padding:40px 0 26px;}
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+    font-size:12.5px;color:#9B9BB0;max-width:1180px;margin:0 auto;padding:0 24px;
+  }
+  .footer-inner .logo{color:var(--white);}
+
+  @media (max-width:760px){
+    .hamburger{display:flex;}
+    nav.main-nav{
+      position:fixed;top:76px;left:0;right:0;background:var(--white);
+      padding:20px 24px 28px;box-shadow:0 12px 24px rgba(43,43,61,0.1);
+      transform:translateY(-110%);opacity:0;transition:transform .3s ease, opacity .3s ease;z-index:99;
+    }
+    nav.main-nav.open{transform:translateY(0);opacity:1;}
+    nav.main-nav ul{flex-direction:column;align-items:flex-start;gap:16px;}
+    .accordion-header{padding:16px;}
+    .highlight-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><span>니즈<span class="brand">오션</span></span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="needs.html">고객사 NEEDS</a></li>
+        <li><a href="direction.html" class="active">사업방향</a></li>
+        <li><a href="ppt.html">고객사 PPT</a></li>
+        <li><a href="update.html">고객사 업데이트</a></li>
+        <li><a href="index.html#audience">이용대상</a></li>
+      </ul>
+    </nav>
+    <a href="login.html" class="cta-btn" id="headerCta">무료로 시작하기</a>
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">홈</a> / 고객사 사업방향</div>
+    <span class="page-badge"><span style="color:var(--gold-deep)">◆</span> 전체 고객사 사업방향 모음</span>
+    <h1 class="page-title kr">고객사 사업방향</h1>
+    <p class="page-desc">니즈오션에 등록된 고객사들의 2026년 사업방향과 전략을 정리했습니다. 항목을 눌러 자세한 내용을 확인해보세요.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container" id="accordionList"></div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo"><span>니즈오션</span></a>
+    <span>© 2026 NeedsOcean. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="data/session.js"></script>
+<script src="data/clients.js"></script>
+<script src="data/updates.js"></script>
+<script>
+  NeedsOceanSession.renderHeaderCta();
+
+  const hamburger = document.getElementById('hamburger');
+  const mainNav = document.getElementById('mainNav');
+  hamburger.addEventListener('click', () => mainNav.classList.toggle('open'));
+
+  const listEl = document.getElementById('accordionList');
+  const esc = NeedsOceanUpdates.escapeHtml;
+
+  function initials(name) {
+    return esc(String(name).slice(0, 2));
+  }
+
+  function reportBlockHtml(u) {
+    const points = NeedsOceanUpdates.toPoints(u.summary, u.content);
+    return `
+      <div class="report-block">
+        <div class="report-block-head">
+          <b>${esc(u.dept)} ${esc(u.empName)} 제보</b>
+          <span class="report-tag">실무자 제보</span>
+        </div>
+        ${points.map(p => `
+          <div class="report-point">
+            <h4 class="kr">${esc(p.title)}</h4>
+            <p>${esc(p.desc)}</p>
+          </div>
+        `).join('')}
+        ${NeedsOceanUpdates.fileChipHtml(u.file)}
+        <span class="report-meta">${NeedsOceanUpdates.formatDate(u.createdAt)} 제보 · AI 자동 요약 <span class="delete-link" onclick="removeReport('${u.id}')">삭제</span></span>
+      </div>
+    `;
+  }
+
+  function removeReport(id) {
+    if (!confirm('이 제보를 삭제할까요?')) return;
+    NeedsOceanUpdates.deleteUpdate(id);
+    location.reload();
+  }
+
+  if (!NeedsOceanSession.isLoggedIn()) {
+    listEl.innerHTML = NeedsOceanSession.gateHtml('로그인 후 고객사 사업방향 데이터를 확인할 수 있어요.');
+  } else {
+
+  const directionUpdates = NeedsOceanUpdates.getUpdates().filter(u => u.category === 'direction');
+  const updatesByClientId = {};
+  const newClientBuckets = [];
+
+  directionUpdates.forEach(u => {
+    if (u.matchedId) {
+      (updatesByClientId[u.matchedId] = updatesByClientId[u.matchedId] || []).push(u);
+      return;
+    }
+    const key = u.clientName.trim().toLowerCase();
+    let bucket = newClientBuckets.find(b => b.key === key);
+    if (!bucket) { bucket = { key, clientName: u.clientName.trim(), items: [] }; newClientBuckets.push(bucket); }
+    bucket.items.push(u);
+  });
+
+  const itemsHtml = window.CLIENT_DATA.map(c => `
+    <div class="accordion-item" id="client-${c.id}">
+      <div class="accordion-header" data-target="${c.id}">
+        <div class="left">
+          <div class="avatar">${initials(c.name)}</div>
+          <div class="accordion-title">
+            <h3 class="kr">${esc(c.name)} <span class="tag">${esc(c.tag)}</span></h3>
+            <div class="summary">${esc(c.direction.summary)}</div>
+          </div>
+        </div>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <p class="direction-full">${esc(c.direction.full)}</p>
+          <div class="highlight-grid">
+            ${c.direction.highlights.map((h, i) => `
+              <div class="highlight-item">
+                <span class="num">${i + 1}</span>
+                <div><h4 class="kr">${esc(h.title)}</h4><p>${esc(h.desc)}</p></div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="product-chips">${c.products.map(p => `<span>${esc(p)}</span>`).join('')}</div>
+          ${(updatesByClientId[c.id] || []).map(reportBlockHtml).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  const newItemsHtml = newClientBuckets.map(bucket => {
+    const elId = 'custom-' + NeedsOceanUpdates.slugify(bucket.clientName);
+    return `
+      <div class="accordion-item" id="client-${elId}">
+        <div class="accordion-header" data-target="${elId}">
+          <div class="left">
+            <div class="avatar">${initials(bucket.clientName)}</div>
+            <div class="accordion-title">
+              <h3 class="kr">${esc(bucket.clientName)} <span class="new-report-badge">실무자 제보</span></h3>
+              <div class="summary">${bucket.items.length}건의 제보</div>
+            </div>
+          </div>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">${bucket.items.map(reportBlockHtml).join('')}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  listEl.innerHTML = itemsHtml + newItemsHtml;
+
+  function toggleAccordion(item, forceOpen) {
+    const body = item.querySelector('.accordion-body');
+    const isOpen = item.classList.contains('open');
+    if (forceOpen === false || (isOpen && forceOpen === undefined)) {
+      item.classList.remove('open');
+      body.style.maxHeight = '0px';
+    } else {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+
+  listEl.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.closest('.accordion-item');
+      toggleAccordion(item);
+    });
+  });
+
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target && target.classList.contains('accordion-item')) {
+      toggleAccordion(target, true);
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+  }
+
+  }
+</script>
+
+</body>
+</html>
