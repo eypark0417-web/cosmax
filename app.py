@@ -13,20 +13,27 @@ st.set_page_config(
     layout="wide",
 )
 
-# Streamlit 기본 여백/메뉴를 숨겨서 랜딩페이지가 화면 전체를 채우도록 함
+# Streamlit 기본 여백/메뉴를 숨기고, 랜딩페이지 iframe이 브라우저 화면 전체를
+# 채우도록 만든다. iframe 높이를 100vh로 고정해야 페이지 스크롤이 iframe '내부'에서
+# 일어나고, 그래야 sticky 헤더·앵커 이동·등장 애니메이션이 정상 동작한다.
 st.markdown(
     """
     <style>
         #MainMenu {visibility: hidden;}
         header[data-testid="stHeader"] {display: none;}
+        footer {visibility: hidden;}
+        [data-testid="stAppViewContainer"] > .main,
         .block-container {
             padding: 0 !important;
             margin: 0 !important;
             max-width: 100% !important;
         }
+        .stApp {overflow: hidden;}
         iframe {
             width: 100% !important;
+            height: 100vh !important;
             border: none !important;
+            display: block;
         }
     </style>
     """,
@@ -994,5 +1001,6 @@ def build_landing_page_html() -> str:
 
 html_content = build_landing_page_html()
 
-# 페이지 전체 높이를 대략적으로 지정 (필요시 값 조정)
-components.html(html_content, height=3200, scrolling=True)
+# 위 CSS에서 iframe 높이를 100vh로 덮어쓰므로 여기 height는 fallback 값이다.
+# scrolling=True 로 iframe 내부에서 스크롤이 일어나게 해야 sticky 헤더가 고정된다.
+components.html(html_content, height=900, scrolling=True)
